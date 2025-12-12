@@ -1,13 +1,13 @@
 {
   "expo": {
     "name": "AllInnovaAssist",
-    "slug": "AllInnovaAssist",
+    "slug": "allinnovaassist",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "allinnovaassist",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "ios": {
       "supportsTablet": true
     },
@@ -19,7 +19,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.natalia.g0807.allinnovaassist"
     },
     "web": {
       "output": "static",
