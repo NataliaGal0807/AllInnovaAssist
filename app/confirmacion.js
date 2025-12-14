@@ -1,5 +1,5 @@
 import * as Clipboard from "expo-clipboard";
-import { router } from "expo-router";
+import { router, Stack } from "expo-router";
 import { Alert, Image, Pressable, Share, StyleSheet, Text, View } from "react-native";
 import imagenLogo from "./imagenes/logo-circular-remove.png";
 
@@ -31,40 +31,44 @@ export default function Confirmacion() {
     };
 
     return (
-        <View style={styles.screen}>
+        <>
+            <Stack.Screen
+                options={{ headerShown: false }}
+            />
+            <View style={styles.screen}>
 
-            {/* Encabezado */}
-            <Image source={imagenLogo} style={styles.logo} />
-            <Text style={styles.title}>¡Reserva confirmada!</Text>
+                {/* Encabezado */}
+                <Image source={imagenLogo} style={styles.logo} />
+                <Text style={styles.title}>¡Reserva confirmada!</Text>
 
-            {/* Tarjeta */}
-            <View style={styles.card}>
-                <Text style={styles.cardTitle}>Detalles del servicio</Text>
-                <Text style={styles.detail}>• Servicio reservado correctamente</Text>
-                <Text style={styles.detail}>• Pago procesado con éxito</Text>
-                <Text style={styles.success}>✔ Todo está listo</Text>
+                {/* Tarjeta */}
+                <View style={styles.card}>
+                    <Text style={styles.cardTitle}>Detalles del servicio</Text>
+                    <Text style={styles.detail}>• Servicio reservado correctamente</Text>
+                    <Text style={styles.detail}>• Pago procesado con éxito</Text>
+                    <Text style={styles.success}>✔ Todo está listo</Text>
+                </View>
+
+                {/* Botón seguimiento */}
+                <Pressable style={styles.primaryButton} onPress={() => router.push("/seguimiento")}>
+                    <Text style={styles.primaryText}>Ir al seguimiento</Text>
+                </Pressable>
+
+                {/* Botón compartir */}
+                <Pressable style={styles.secondaryButton} onPress={compartirSeguimiento}>
+                    <Text style={styles.secondaryText}>Compartir seguimiento</Text>
+                </Pressable>
+
+                {/* Botón copiar */}
+                <Pressable style={styles.outlineButton} onPress={copiarLink}>
+                    <Text style={styles.outlineText}>Copiar enlace</Text>
+                </Pressable>
+
+                <Pressable onPress={() => router.push("/")}>
+                    <Text style={styles.backText}>Volver al inicio</Text>
+                </Pressable>
             </View>
-
-            {/* Botón seguimiento */}
-            <Pressable style={styles.primaryButton} onPress={() => router.push("/seguimiento")}>
-                <Text style={styles.primaryText}>Ir al seguimiento</Text>
-            </Pressable>
-
-            {/* Botón compartir */}
-            <Pressable style={styles.secondaryButton} onPress={compartirSeguimiento}>
-                <Text style={styles.secondaryText}>Compartir seguimiento</Text>
-            </Pressable>
-
-            {/* Botón copiar */}
-            <Pressable style={styles.outlineButton} onPress={copiarLink}>
-                <Text style={styles.outlineText}>Copiar enlace</Text>
-            </Pressable>
-
-            <Pressable onPress={() => router.push("/")}>
-                <Text style={styles.backText}>Volver al inicio</Text>
-            </Pressable>
-
-        </View>
+        </>
     );
 }
 

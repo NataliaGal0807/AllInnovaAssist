@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { router, Stack, } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
@@ -25,74 +25,79 @@ export default function Pago() {
     };
 
     return (
-        <View style={styles.fullBackground}>
-            <ScrollView contentContainerStyle={styles.contentWrapper}>
-                <View style={styles.container}>
-                    <Text style={styles.title}>Pago con tarjeta</Text>
+        <>
+            <Stack.Screen
+                options={{ title: "" }}
+            />
+            <View style={styles.fullBackground}>
+                <ScrollView contentContainerStyle={styles.contentWrapper}>
+                    <View style={styles.container}>
+                        <Text style={styles.title}>Pago con tarjeta</Text>
 
-                    {/* Nombre */}
-                    <Text style={styles.label}>Nombre del titular</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Ej: Natalia Galeano"
-                        value={nombre}
-                        onChangeText={setNombre}
-                    />
+                        {/* Nombre */}
+                        <Text style={styles.label}>Nombre del titular</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Ej: Natalia Galeano"
+                            value={nombre}
+                            onChangeText={setNombre}
+                        />
 
-                    {/* Tarjeta */}
-                    <Text style={styles.label}>Número de tarjeta</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="1234 5678 9012 3456"
-                        keyboardType="numeric"
-                        maxLength={19}
-                        value={tarjeta}
-                        onChangeText={setTarjeta}
-                    />
+                        {/* Tarjeta */}
+                        <Text style={styles.label}>Número de tarjeta</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="1234 5678 9012 3456"
+                            keyboardType="numeric"
+                            maxLength={19}
+                            value={tarjeta}
+                            onChangeText={setTarjeta}
+                        />
 
-                    <View style={styles.row}>
-                        {/* Vencimiento */}
-                        <View style={{ flex: 1, marginRight: 10 }}>
-                            <Text style={styles.label}>Vencimiento</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="MM/AA"
-                                maxLength={5}
-                                value={vencimiento}
-                                onChangeText={setVencimiento}
-                            />
+                        <View style={styles.row}>
+                            {/* Vencimiento */}
+                            <View style={{ flex: 1, marginRight: 10 }}>
+                                <Text style={styles.label}>Vencimiento</Text>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="MM/AA"
+                                    maxLength={5}
+                                    value={vencimiento}
+                                    onChangeText={setVencimiento}
+                                />
+                            </View>
+
+                            {/* CVV */}
+                            <View style={{ flex: 1 }}>
+                                <Text style={styles.label}>CVV</Text>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="123"
+                                    keyboardType="numeric"
+                                    maxLength={3}
+                                    value={cvv}
+                                    onChangeText={setCvv}
+                                />
+                            </View>
                         </View>
 
-                        {/* CVV */}
-                        <View style={{ flex: 1 }}>
-                            <Text style={styles.label}>CVV</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="123"
-                                keyboardType="numeric"
-                                maxLength={3}
-                                value={cvv}
-                                onChangeText={setCvv}
-                            />
-                        </View>
+                        {/* Botón pagar */}
+                        <Pressable style={styles.payButton} onPress={pagar} disabled={cargando}>
+                            {cargando ? (
+                                <ActivityIndicator color="#FFF" />
+                            ) : (
+                                <Text style={styles.payText}>Pagar ahora</Text>
+                            )}
+                        </Pressable>
+
+                        {/* Cancelar */}
+                        <Pressable onPress={() => router.back()}>
+                            <Text style={styles.cancel}>Cancelar</Text>
+                        </Pressable>
                     </View>
-
-                    {/* Botón pagar */}
-                    <Pressable style={styles.payButton} onPress={pagar} disabled={cargando}>
-                        {cargando ? (
-                            <ActivityIndicator color="#FFF" />
-                        ) : (
-                            <Text style={styles.payText}>Pagar ahora</Text>
-                        )}
-                    </Pressable>
-
-                    {/* Cancelar */}
-                    <Pressable onPress={() => router.back()}>
-                        <Text style={styles.cancel}>Cancelar</Text>
-                    </Pressable>
-                </View>
-            </ScrollView>
-        </View>
+                </ScrollView>
+            </View>
+        </>
     );
 }
 

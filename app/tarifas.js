@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { router, Stack } from "expo-router";
 import { useState } from "react";
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
@@ -44,6 +44,9 @@ export default function Tarifas() {
 
     return (
         <>
+            <Stack.Screen
+                options={{ title: "" }}
+            />
             <ScrollView style={styles.container} contentContainerStyle={styles.content}>
 
                 <Text style={styles.title}>Tarifas y horarios</Text>
@@ -54,14 +57,17 @@ export default function Tarifas() {
                     <Text style={styles.cardTitle}>TURNO MAÑANA</Text>
                     <Text style={styles.cardText}>Horario: 07:00 - 15:00</Text>
                     <Text style={styles.cardPrice}>$15.000 por hora</Text>
+                    <Text style={styles.promoText}>🎉 Promoción: 3 hrs por $40.000</Text>
                 </Pressable>
+
 
                 {/* TURNO TARDE */}
                 <Pressable style={styles.cardAfternoon} onPress={() => abrirReserva("tarde")}>
                     <Text style={styles.icon}>🌇</Text>
                     <Text style={styles.cardTitle}>TURNO TARDE</Text>
                     <Text style={styles.cardText}>Horario: 15:00 - 23:00</Text>
-                    <Text style={styles.cardPrice}>$18.000 por hora</Text>
+                    <Text style={styles.cardPrice}>$15.000 por hora</Text>
+                    <Text style={styles.promoText}>🎉 Promoción: 3 hrs por $40.000</Text>
                 </Pressable>
 
                 {/* EMERGENCIA */}
@@ -183,6 +189,16 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginVertical: 10,
         alignItems: "center",
+    },
+    promoText: {
+        marginTop: 8,
+        textAlign: "center",
+        color: "#FFF",
+        fontWeight: "600",
+        fontSize: 14,
+        backgroundColor: "rgba(0,0,0,0.15)",
+        paddingVertical: 6,
+        borderRadius: 8,
     },
 
     emergencyText: { color: "white", fontWeight: "bold", fontSize: 16 },

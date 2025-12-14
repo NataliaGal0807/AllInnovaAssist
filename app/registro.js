@@ -1,6 +1,7 @@
-import { Link, useRouter } from "expo-router";
+import { Link, Stack, useRouter } from "expo-router";
 import { useState } from "react";
 import {
+    Image,
     Modal,
     Pressable,
     ScrollView,
@@ -9,7 +10,7 @@ import {
     TextInput,
     View
 } from "react-native";
-
+import imagenLogo from "./imagenes/logo-circular-remove.png";
 export default function Registro() {
 
     const router = useRouter();
@@ -33,6 +34,9 @@ export default function Registro() {
 
     return (
         <>
+            <Stack.Screen
+                options={{ headerShown: false }}
+            />
             {/* -------------------- MODAL BONITO -------------------- */}
             <Modal
                 animationType="fade"
@@ -65,9 +69,10 @@ export default function Registro() {
             {/* -------------------- FORMULARIO -------------------- */}
 
             <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-
-                <Text style={styles.title}>Ficha de registro</Text>
-
+                <View style={styles.header}>
+                    <Image source={imagenLogo} style={styles.logo} resizeMode="contain" />
+                    <Text style={styles.title}>Ficha de registro</Text>
+                </View>
                 {/* Nombre */}
                 <Text style={styles.label}>Nombre completo</Text>
                 <TextInput
@@ -144,12 +149,21 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         paddingBottom: 40,
     },
+    logo: {
+        width: 120,
+        height: 120,
+        marginBottom: 10,
+    },
     title: {
         fontSize: 26,
         fontWeight: "bold",
         color: "#002B26",
         textAlign: "center",
         marginBottom: 25,
+    },
+    header: {
+        alignItems: "center",
+        marginBottom: 10,
     },
     label: {
         fontSize: 14,

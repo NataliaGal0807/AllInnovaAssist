@@ -1,11 +1,12 @@
-import { router } from "expo-router";
-import { useRef, useState } from "react";
+import { router, Stack, } from "expo-router";
+import { useRef, useState, } from "react";
 import {
     Alert,
     Animated,
     Image,
     Modal,
     Pressable,
+
     StyleSheet,
     Text,
     TextInput,
@@ -61,6 +62,9 @@ export default function Calificacion() {
 
     return (
         <>
+            <Stack.Screen
+                options={{ title: "Calificación" }}
+            />
             <View style={styles.container}>
                 <View style={styles.inner}>
 

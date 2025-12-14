@@ -1,4 +1,4 @@
-import { Link, router } from "expo-router";
+import { Link, router, Stack } from "expo-router";
 import { useState } from "react";
 import { Image, Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import imagenLogo from "./imagenes/logo-circular-remove.png";
@@ -19,6 +19,9 @@ export default function Inicio() {
 
     return (
         <>
+            <Stack.Screen
+                options={{ headerShown: false }}
+            />
             <ScrollView style={styles.container} contentContainerStyle={styles.content}>
 
                 {/* LOGO */}

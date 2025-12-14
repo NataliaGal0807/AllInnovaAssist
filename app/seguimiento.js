@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { router, Stack } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import {
     Animated,
@@ -54,57 +54,62 @@ export default function Seguimiento() {
         Animated.loop(Animated.sequence(animaciones)).start();
     }, [mapSize]);
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: "#F2F7FA" }}
-            contentContainerStyle={styles.scrollContent}
-        >
-            {/* HEADER */}
-            <View style={styles.header}>
-                <View style={styles.logoContainer}>
-                    <Image source={imagenLogo} style={styles.logo} />
+        <>
+            <Stack.Screen
+                options={{ title: "" }}
+            />
+            <ScrollView style={{ flex: 1, backgroundColor: "#F2F7FA" }}
+                contentContainerStyle={styles.scrollContent}
+            >
+                {/* HEADER */}
+                <View style={styles.header}>
+                    <View style={styles.logoContainer}>
+                        <Image source={imagenLogo} style={styles.logo} />
+                    </View>
+                    <Text style={styles.headerText}>Seguimiento en tiempo real</Text>
                 </View>
-                <Text style={styles.headerText}>Seguimiento en tiempo real</Text>
-            </View>
 
-            {/* MAPA */}
-            <View style={styles.mapWrapper}>
-                <View
-                    style={styles.mapContainer}
-                    onLayout={(e) => {
-                        const { width, height } = e.nativeEvent.layout;
-                        setMapSize({ width, height });
-                    }}
-                >
-                    <Image source={imagenMapa} style={styles.mapa} />
+                {/* MAPA */}
+                <View style={styles.mapWrapper}>
+                    <View
+                        style={styles.mapContainer}
+                        onLayout={(e) => {
+                            const { width, height } = e.nativeEvent.layout;
+                            setMapSize({ width, height });
+                        }}
+                    >
+                        <Image source={imagenMapa} style={styles.mapa} />
 
-                    {/* AUTO ANIMADO */}
-                    <Animated.Image
-                        source={imagenAuto}
-                        style={[
-                            styles.auto,
-                            { transform: pos.getTranslateTransform() }
-                        ]}
-                    />
+                        {/* AUTO ANIMADO */}
+                        <Animated.Image
+                            source={imagenAuto}
+                            style={[
+                                styles.auto,
+                                { transform: pos.getTranslateTransform() }
+                            ]}
+                        />
+                    </View>
                 </View>
-            </View>
 
-            {/* BURBUJA */}
-            <View style={styles.bubble}>
-                <Text style={styles.bubbleText}>El viaje está en curso...</Text>
+                {/* BURBUJA */}
+                <View style={styles.bubble}>
+                    <Text style={styles.bubbleText}>El viaje está en curso...</Text>
 
-                <Pressable
-                    onPress={() => router.push("/calificacion")}
-                    style={styles.bubbleButton}
-                >
-                    <Text style={styles.bubbleButtonText}>Calificar servicio</Text>
-                </Pressable>
-            </View>
+                    <Pressable
+                        onPress={() => router.push("/calificacion")}
+                        style={styles.bubbleButton}
+                    >
+                        <Text style={styles.bubbleButtonText}>Calificar servicio</Text>
+                    </Pressable>
+                </View>
 
-            {/* FOOTER */}
-            <View style={styles.footer}>
-                <Text style={styles.footerText}>Estado: En camino</Text>
-                <Text style={styles.footerText}>Llegada estimada: 15:30</Text>
-            </View>
-        </ScrollView>
+                {/* FOOTER */}
+                <View style={styles.footer}>
+                    <Text style={styles.footerText}>Estado: En camino</Text>
+                    <Text style={styles.footerText}>Llegada estimada: 15:30</Text>
+                </View>
+            </ScrollView>
+        </>
     );
 }
 
@@ -122,13 +127,13 @@ const styles = StyleSheet.create({
         paddingBottom: 40,
     },
     logo: {
-        width: 55,
-        height: 55,
+        width: 70,
+        height: 70,
     },
 
     logoContainer: {
         backgroundColor: "white",
-        padding: 8,
+        padding: 1,
         borderRadius: 50,
         marginRight: 10,
 
@@ -146,8 +151,6 @@ const styles = StyleSheet.create({
             boxShadow: "0px 2px 6px rgba(0,0,0,0.25)",
         }),
     },
-
-
 
     headerText: {
         color: "white",
