@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo-circular-remove.png",
-    "scheme": "Allinnovaassist",
+    "scheme": "allinnovaassist",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
