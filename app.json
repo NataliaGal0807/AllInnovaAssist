@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo-circular-remove.png",
-    "scheme": "allinnovaassist",
+    "scheme": "Allinnovaassist",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true
@@ -15,11 +15,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo-circular-remove.png",
         "backgroundColor": "#E6F4FE"
-      },
-      "edgeToEdgeEnabled": true
+      }
     },
     "web": {
-      "output": "static",
       "favicon": "./assets/images/logo-circular-remove.png"
     },
     "plugins": [
@@ -28,22 +26,13 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/logo-circular-remove.png",
-          "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
-          "dark": {
-            "backgroundColor": "#000000"
-          }
+          "backgroundColor": "#ffffff"
         }
       ],
       "expo-web-browser"
     ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
-    },
     "extra": {
-      "router": {},
       "eas": {
         "projectId": "6c0eff40-7e3a-4c0e-b061-e12799d9e48d"
       }
